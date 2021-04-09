@@ -52,7 +52,6 @@ h1, h2, h3, h4, h5, h6, ul, p {
     margin: 0 auto;
     padding-left: 15px;
     padding-right: 15px;
-   /* background-color: darkolivegreen;*/
 }
 .section {
     padding-top: 94px;
@@ -118,25 +117,24 @@ h1, h2, h3, h4, h5, h6, ul, p {
     padding-top: 32px;
     padding-bottom: 32px;
     color: var(--title-text-color);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .nav-link:hover,
 .nav-link:focus,
 .header-link:hover,
 .header-link:focus {
     color: var(--accent-color);
+   
 }
-.border-link::after {
-    content: "";
-    display: block;
-    border-bottom: 4px solid #2196F3;
-    border-radius: 2px;
-}
+
 .header-link {
     display: flex;
     align-items: center;
     padding-top: 32px;
     padding-bottom: 32px;
     color: var(--body-color);
+    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-width 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-contacts {
@@ -159,6 +157,8 @@ h1, h2, h3, h4, h5, h6, ul, p {
 .icon-contacts {
     margin-right: 10px;
     stroke: currentColor; 
+    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-width 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-link:hover .icon-contacts,
@@ -198,6 +198,7 @@ h1, h2, h3, h4, h5, h6, ul, p {
     letter-spacing: 0.06em;
     color: var(--text-color-accent);
     background-color: var(--accent-color);
+    transition:  background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .hero-button:focus,
 .hero-button:hover {
@@ -219,25 +220,45 @@ h1, h2, h3, h4, h5, h6, ul, p {
     top: 0;
     left: 0;
     width: 100%;
-    height: 1024px;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .backdrop.is-hidden {
     opacity: 0;
     pointer-events: none;
   }
-  
+  .backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.7);
+
+  }
   .modal {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-  
-    min-height: 300px;
-    min-width: 400px;
-    padding: 15px;
-  
-    background-color: #fff;
+    min-height: 581px;
+    min-width: 528px;
+    background-color: var(--text-color-accent);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .icon-close {
+    padding-right: 2px;
+    padding-top: 2px;
+  }
+  .button-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--text-color-accent);
+    border: 1px solid rgba(0, 0, 0, 0.1);      
   }
 
 /*блок преимущества*/
@@ -278,13 +299,13 @@ h1, h2, h3, h4, h5, h6, ul, p {
 */
 
 .icon-ad {
-    width: 70px;
-    height: 70px;
+  width: 70px;
+  height: 70px;
 }
 .advantages-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 270px;
   height: 120px;
   margin-bottom: var(--card-set-gap);
@@ -330,12 +351,16 @@ h1, h2, h3, h4, h5, h6, ul, p {
     justify-content: center;
     flex-wrap: wrap;
     list-style: none;
+    
 }
 .examples-list-item {
     position: relative;
 }
 .examples-list-item p {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     left: 0;
     bottom: 0;
     height: 70px;
@@ -343,16 +368,12 @@ h1, h2, h3, h4, h5, h6, ul, p {
     font-weight: 700;
     font-size: 14px;
     line-height: 1.14;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     letter-spacing: 0.03em;
     text-transform: uppercase;
     color: var(--text-color-accent);
     background-color: rgba(47, 48, 58, 0.8);
 }
 .examples-list-item:not(:last-child) {
-    
     margin-right: var(--card-set-gap);
 }
 
@@ -409,6 +430,8 @@ h1, h2, h3, h4, h5, h6, ul, p {
     width: 20px;
     height: 20px;
     fill: var(--icons-colos);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-icons-item {
     width: 44px;
@@ -422,6 +445,7 @@ h1, h2, h3, h4, h5, h6, ul, p {
     height: 100%;
     border-radius: 50%;
     background-color: var(--text-color-accent);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .social-icons-link:hover .icon, 
 .social-icons-link:focus .icon {
@@ -461,9 +485,11 @@ h1, h2, h3, h4, h5, h6, ul, p {
   border-radius: 4px;
   width: 100%;
   height: 100%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clients-icon {
     fill: var(--icons-colos);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .clients-link:hover .clients-icon,
 .clients-link:focus .clients-icon {
@@ -498,6 +524,7 @@ h1, h2, h3, h4, h5, h6, ul, p {
 }
 .footer-hover { 
     font-weight: 400;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-hover:not(:last-child) {
     margin-bottom: 9px;
@@ -541,10 +568,12 @@ h1, h2, h3, h4, h5, h6, ul, p {
     flex-basis: calc(50% - 15px);
     flex-grow: 1;
 }
+
 .social-icons-link:hover,
 .social-icons-link:focus {
     background-color: var(--accent-color);
 }
+
 
 /*PORTFOLIO!!!*/
 
@@ -567,6 +596,9 @@ h1, h2, h3, h4, h5, h6, ul, p {
     border: none;
     color: var(--title-text-color);
     background-color: var(--background-color-section);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .projects-button:focus,
 .projects-button:hover {
@@ -607,11 +639,14 @@ h1, h2, h3, h4, h5, h6, ul, p {
     flex-basis: calc((100% - 3 * var(--card-set-gap)) / 3);
     margin-left: var(--card-set-gap);
     margin-top: var(--card-set-gap);
+    
 }
 .projects-link {
     display: block;
     text-decoration: none;
     color: inherit;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
 }
 .projects-link:focus,
 .projects-link:hover {
@@ -620,14 +655,27 @@ h1, h2, h3, h4, h5, h6, ul, p {
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 .current {
+    position: relative;
     color: var(--accent-color);
 }
+.current::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 4px solid var(--accent-color);
+    border-radius: 2px;
+}
+
 .projects-button-option {
     background-color: var(--accent-color);
     color: var(--text-color-accent);
 }
 .projects-link-anime {
     position: relative;
+    overflow: hidden;
 }
 .projects-link-anime:hover::before {
     opacity: 1;
@@ -642,7 +690,15 @@ h1, h2, h3, h4, h5, h6, ul, p {
     height: 100%;
     background-color: rgba(33, 150, 243, 0.9);
     opacity: 0;
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.projects-item:hover .projects-link-anime::before {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 .anime-item {
     position: absolute;
     top: 0;
@@ -654,6 +710,8 @@ h1, h2, h3, h4, h5, h6, ul, p {
     line-height: 1.56;
     letter-spacing: 0.03em;
     color: var(--text-color-accent);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1) ;
 }
 .anime-item:hover,
 .projects-link:hover .anime-item {
@@ -665,4 +723,5 @@ h1, h2, h3, h4, h5, h6, ul, p {
   background-color: rgba(33, 150, 243, 0.9);
   opacity: 1;
 }
- 
+
+
